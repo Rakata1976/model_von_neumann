@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="id">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260907-23-3e651e9","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/9e99ecf74af2a081.telemetry_sdk.js" integrity="sha512-tZ7fmfTx2KpCLjXQnEuL9azQ4A5+7+xumsx6r/WYVD0zCP/8LP8hDeCypMQesmP+WyAew4g7l5Ah23Bjd6yoVg=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Von Neumann — Lab IPO</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#071426;--panel:#102440;--cyan:#25d9e8;--blue:#2679ff;--lime:#bcf66b;--ink:#dcecff;--muted:#91a9c9;--danger:#fb7185}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:"DM Sans",sans-serif;background:#071426;color:var(--ink)}
+    button,input,select,textarea{font:inherit} button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #bcf66b;outline-offset:3px}
+    .app-shell{width:100%;min-height:calc(100 * min(var(--vh,1vh),1vh));background:radial-gradient(circle at 90% 0%,#163b68 0%,transparent 35%),linear-gradient(135deg,#071426,#091c35)}
+    .grid-bg{background-image:linear-gradient(rgba(68,168,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(68,168,255,.07) 1px,transparent 1px);background-size:32px 32px}
+    .sidebar{width:270px}.view{display:none;animation:fade .35s ease both}.view.active{display:block}.glass{background:rgba(14,37,67,.85);border:1px solid rgba(112,182,255,.18);box-shadow:0 18px 50px rgba(0,0,0,.22)}
+    .nav-btn{color:#afc4df;border-left:3px solid transparent;transition:.2s}.nav-btn:hover,.nav-btn.active{background:rgba(37,217,232,.1);color:#fff;border-left-color:var(--cyan)}
+    .tech-card{background:linear-gradient(145deg,rgba(21,53,91,.95),rgba(9,28,52,.95));border:1px solid rgba(115,183,255,.2);box-shadow:0 14px 30px rgba(0,0,0,.15)}
+    .primary{background:#25d9e8;color:#061426}.primary:hover{background:#8af7ff}.secondary{border:1px solid rgba(188,246,107,.72);color:#d9ff9c;background:transparent}.secondary:hover{background:rgba(188,246,107,.12)}
+    .mono{font-family:"Space Mono",monospace}.flow-card{border:1px solid rgba(37,217,232,.42);background:#102d50;transition:.25s}.flow-card.active-stage{border-color:var(--lime);box-shadow:0 0 0 3px rgba(188,246,107,.16),0 0 32px rgba(188,246,107,.2);transform:translateY(-4px)}
+    .cpu-unit{border:1px solid rgba(145,169,201,.27);background:rgba(4,17,34,.35)}.line{height:3px;min-width:20px;flex:1;background:linear-gradient(90deg,#25d9e8,#bcf66b);position:relative;overflow:hidden}
+    .line::after{content:"";position:absolute;top:0;left:-30px;width:24px;height:100%;background:#fff;animation:signal 2s infinite}.packet{width:18px;height:18px;border-radius:999px;background:var(--lime);box-shadow:0 0 22px var(--lime);position:absolute;opacity:0;z-index:10}
+    .packet.run{opacity:1;animation:packetmove 3.8s ease-in-out forwards}.choice{border:1px solid rgba(145,169,201,.32);background:rgba(4,17,34,.3);transition:.18s}.choice:hover{border-color:var(--cyan);background:rgba(37,217,232,.1)}.choice.correct{border-color:var(--lime);background:rgba(188,246,107,.13)}.choice.wrong{border-color:var(--danger);background:rgba(251,113,133,.13)}
+    .stage{display:none}.stage.active{display:block;animation:fade .25s ease}.drop-slot{min-height:76px;border:2px dashed rgba(145,169,201,.4);background:rgba(4,17,34,.3);transition:.2s}.drop-slot.over{border-color:var(--cyan);background:rgba(37,217,232,.1)}.drag-card{cursor:grab;user-select:none}.drag-card:active{cursor:grabbing}
+    .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#25d9e8,#bcf66b);transition:width .45s}.hint{background:rgba(37,217,232,.09);border:1px solid rgba(37,217,232,.25)}
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes signal{to{left:110%}}@keyframes packetmove{0%{transform:translateX(0)}100%{transform:translateX(min(740px,72vw))}}
+    @media(max-width:900px){.sidebar{position:fixed;left:-280px;top:0;bottom:0;z-index:50;transition:left .3s}.sidebar.open{left:0}.mobile-toggle{display:flex!important}.app-main{width:100%}}
+  </style>
+  <script src="/_sdk/fbe2ebfd64647c54.data_sdk.js" type="text/javascript" integrity="sha512-vkTX6CfvpHc3WbjK+tFJCaDuw4ERA4aEV/e5/7+MMJPMTF4RJYCI6CAwJBT/gtDW+dba4uLSsPUgDjVDHWtgUQ=="></script>
+  <script src="/_sdk/fcb6dc01f91829ac.resizing_sdk.js" type="text/javascript" integrity="sha512-YK8JfnN705qaEaVhiL7pcVB2Rs/BbdX5yxV55Az8zT/1JanyEWTw9HqCF915m9iV1YEaoil8qsjJz03l1Kb0Ug=="></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div class="app-shell grid-bg flex">
+   <aside id="sidebar" class="sidebar glass shrink-0 p-4 flex flex-col" aria-label="Navigasi pembelajaran">
+    <header class="flex items-center gap-3 px-3 py-3 mb-4">
+     <div class="w-10 h-10 rounded-xl bg-cyan-300 text-slate-950 flex items-center justify-center">
+      <i data-lucide="cpu"></i>
+     </div>
+     <div>
+      <p class="mono text-xs text-cyan-300">INFORMATIKA X</p><strong data-template-id="side-title" class="canva-text block"></strong>
+     </div>
+    </header>
+    <nav class="space-y-1 flex-1" aria-label="Menu utama"><button class="nav-btn active w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="home"><i data-lucide="house" class="w-4"></i><span data-template-id="nav-home" class="canva-text"></span></button> <button class="nav-btn w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="simulation"><i data-lucide="repeat-2" class="w-4"></i><span data-template-id="nav-simulation" class="canva-text"></span></button> <button class="nav-btn w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="game"><i data-lucide="gamepad-2" class="w-4"></i><span data-template-id="nav-game" class="canva-text"></span></button> <button class="nav-btn w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="hots"><i data-lucide="brain" class="w-4"></i><span data-template-id="nav-hots" class="canva-text"></span></button> <button class="nav-btn w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="explore"><i data-lucide="search-check" class="w-4"></i><span data-template-id="nav-explore" class="canva-text"></span></button> <button class="nav-btn w-full rounded-lg px-3 py-2.5 flex items-center gap-3 text-left" data-view="results"><i data-lucide="bar-chart-3" class="w-4"></i><span data-template-id="nav-results" class="canva-text"></span></button>
+    </nav>
+    <div class="mt-4 rounded-xl bg-slate-950/35 p-3">
+     <div class="flex justify-between text-xs mb-2">
+      <span data-template-id="progress-label" class="canva-text"></span><span id="progressText">0%</span>
+     </div>
+     <div class="h-2 rounded-full bg-slate-700 overflow-hidden">
+      <div id="progressBar" class="bar-fill" style="width:0%"></div>
+     </div>
+    </div>
+   </aside>
+   <main class="app-main flex-1 min-w-0 p-4 md:p-8"><button id="menuToggle" type="button" class="mobile-toggle hidden mb-4 w-11 h-11 glass rounded-lg items-center justify-center" aria-label="Buka navigasi"><i data-lucide="menu"></i></button>
+    <section id="home" class="view active max-w-6xl mx-auto">
+     <div class="min-h-[620px] flex flex-col justify-center">
+      <p data-template-id="home-kicker" class="canva-text mono text-cyan-300 tracking-widest mb-4"></p>
+      <h1 data-template-id="home-title" class="canva-text text-4xl md:text-6xl font-bold leading-tight max-w-4xl"></h1>
+      <p data-template-id="home-subtitle" class="canva-text text-lg text-slate-300 max-w-3xl mt-5"></p>
+      <div class="tech-card rounded-3xl p-6 mt-10 max-w-5xl">
+       <h2 data-template-id="learning-cycle-title" class="canva-text font-bold text-cyan-200"></h2>
+       <div class="grid md:grid-cols-6 gap-3 mt-5 text-center">
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="sparkles" class="mx-auto text-lime-300"></i>
+         <p class="mt-2 font-bold text-sm">PREDICT</p>
+        </div>
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="mouse-pointer-click" class="mx-auto text-cyan-300"></i>
+         <p class="mt-2 font-bold text-sm">INTERACT</p>
+        </div>
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="eye" class="mx-auto text-cyan-300"></i>
+         <p class="mt-2 font-bold text-sm">OBSERVE</p>
+        </div>
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="scan-search" class="mx-auto text-lime-300"></i>
+         <p class="mt-2 font-bold text-sm">ANALYZE</p>
+        </div>
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="message-square-text" class="mx-auto text-cyan-300"></i>
+         <p class="mt-2 font-bold text-sm">FEEDBACK</p>
+        </div>
+        <div class="flow-card rounded-xl p-4">
+         <i data-lucide="lightbulb" class="mx-auto text-lime-300"></i>
+         <p class="mt-2 font-bold text-sm">REFLECT</p>
+        </div>
+       </div>
+      </div>
+      <div class="flex flex-wrap gap-3 mt-8"><button data-template-id="start-sim-btn" data-go="simulation" class="canva-button primary rounded-xl px-6 py-3 font-bold"></button> <button data-template-id="start-game-btn" data-go="game" class="canva-button secondary rounded-xl px-6 py-3 font-bold"></button>
+      </div>
+     </div>
+    </section>
+    <section id="simulation" class="view max-w-6xl mx-auto">
+     <p class="mono text-cyan-300 text-sm">01 / SIMULASI UTAMA</p>
+     <h2 data-template-id="simulation-title" class="canva-text text-3xl font-bold mt-2"></h2>
+     <p data-template-id="simulation-subtitle" class="canva-text text-slate-300 mt-2"></p>
+     <div class="grid lg:grid-cols-[1fr_1.35fr] gap-6 mt-6">
+      <aside class="tech-card rounded-2xl p-5">
+       <h3 data-template-id="scenario-title" class="canva-text font-bold"></h3>
+       <div class="grid gap-2 mt-4"><button type="button" class="scenario choice rounded-xl p-3 text-left active-scenario" data-case="math">1. Hitung 25 + 15</button> <button type="button" class="scenario choice rounded-xl p-3 text-left" data-case="average">2. Rata-rata nilai siswa</button> <button type="button" class="scenario choice rounded-xl p-3 text-left" data-case="typing">3. Mengetik dokumen</button> <button type="button" class="scenario choice rounded-xl p-3 text-left" data-case="music">4. Memutar musik</button> <button type="button" class="scenario choice rounded-xl p-3 text-left" data-case="photo">5. Mengambil foto</button>
+       </div>
+       <div id="mathControls" class="mt-5 space-y-3"><label for="numberOne" class="block text-sm text-slate-200">Angka pertama</label> <input id="numberOne" type="number" value="25" class="w-full rounded-lg bg-slate-950/50 border border-slate-600 p-3"> <label for="operator" class="block text-sm text-slate-200">Operator</label> <select id="operator" class="w-full rounded-lg bg-slate-950/50 border border-slate-600 p-3"><option value="+">+</option><option value="-">−</option><option value="*">×</option><option value="/">÷</option></select> <label for="numberTwo" class="block text-sm text-slate-200">Angka kedua</label> <input id="numberTwo" type="number" value="15" class="w-full rounded-lg bg-slate-950/50 border border-slate-600 p-3">
+       </div>
+       <div class="mt-5"><label for="prediction" data-template-id="prediction-label" class="canva-text block font-bold mb-2"></label> <input id="prediction" type="text" class="w-full rounded-lg bg-slate-950/50 border border-cyan-300/50 p-3" placeholder="Tulis prediksimu">
+       </div>
+       <fieldset class="mt-5"><legend data-template-id="mode-label" class="canva-text font-bold"></legend>
+        <div class="flex gap-2 mt-3"><button id="autoMode" type="button" class="mode-btn primary rounded-lg px-3 py-2 text-sm font-bold">Otomatis</button> <button id="analysisMode" type="button" class="mode-btn secondary rounded-lg px-3 py-2 text-sm">Analisis</button>
+        </div>
+       </fieldset><button id="runSimulation" data-template-id="run-simulation-btn" type="button" class="canva-button primary w-full rounded-xl px-5 py-3 mt-5 font-bold"></button>
+      </aside>
+      <div class="tech-card rounded-2xl p-5 md:p-7 overflow-hidden">
+       <div class="flex justify-between gap-4 items-start">
+        <div>
+         <p class="mono text-xs text-cyan-300">LIVE DATA FLOW</p>
+         <h3 id="simCaseName" class="text-xl font-bold mt-1">Menghitung 25 + 15</h3>
+        </div>
+        <div class="rounded-lg bg-lime-300/10 text-lime-200 px-3 py-2 text-sm" id="simStatus">
+         Siap diprediksi
+        </div>
+       </div>
+       <div id="simDiagram" class="relative mt-8">
+        <div id="dataPacket" class="packet top-9 left-4"></div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 items-stretch">
+         <article id="node-input" class="flow-card rounded-2xl p-4 text-center">
+          <i data-lucide="keyboard" class="mx-auto text-cyan-300"></i>
+          <h4 class="font-bold mt-2">INPUT</h4>
+          <p id="inputDetail" class="text-xs text-slate-300 mt-2">Keyboard: 25 + 15</p>
+         </article>
+         <article id="node-memory" class="flow-card rounded-2xl p-4 text-center">
+          <i data-lucide="memory-stick" class="mx-auto text-yellow-300"></i>
+          <h4 class="font-bold mt-2">MEMORY</h4>
+          <p id="memoryDetail" class="text-xs text-slate-300 mt-2">Simpan data &amp; instruksi</p>
+         </article>
+         <article id="node-cpu" class="flow-card rounded-2xl p-4 text-center">
+          <i data-lucide="cpu" class="mx-auto text-lime-300"></i>
+          <h4 class="font-bold mt-2">CPU</h4>
+          <div class="grid grid-cols-3 gap-1 mt-3 text-[10px]">
+           <span class="cpu-unit rounded p-1">CU</span><span class="cpu-unit rounded p-1">ALU</span><span class="cpu-unit rounded p-1">REG</span>
+          </div>
+          <p id="cpuDetail" class="text-xs text-slate-300 mt-2">Menunggu instruksi</p>
+         </article>
+         <article id="node-output" class="flow-card rounded-2xl p-4 text-center">
+          <i data-lucide="monitor" class="mx-auto text-pink-300"></i>
+          <h4 class="font-bold mt-2">OUTPUT</h4>
+          <p id="outputDetail" class="text-xs text-slate-300 mt-2">Menunggu hasil</p>
+         </article>
+        </div>
+       </div>
+       <div id="analysisPanel" class="hidden hint rounded-xl p-4 mt-6">
+        <p id="analysisQuestion" class="font-bold"></p>
+        <div id="analysisOptions" class="grid sm:grid-cols-2 gap-2 mt-3"></div>
+        <p id="analysisFeedback" class="text-sm mt-3 min-h-5" aria-live="polite"></p>
+       </div>
+       <div id="simFeedback" class="mt-6 rounded-xl bg-slate-950/45 border border-slate-700 p-4 min-h-[78px]" aria-live="polite">
+        Masukkan prediksi, pilih mode, lalu jalankan proses untuk melihat data bergerak.
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="game" class="view max-w-6xl mx-auto">
+     <p class="mono text-cyan-300 text-sm">02 / GAME UTAMA</p>
+     <h2 data-template-id="game-title" class="canva-text text-3xl font-bold mt-2"></h2>
+     <div class="grid lg:grid-cols-[1fr_2fr] gap-6 mt-6">
+      <aside class="tech-card rounded-2xl p-5">
+       <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-xl bg-cyan-300/10 p-3">
+         <p class="text-xs text-slate-400">SKOR</p>
+         <p id="gameScore" class="text-2xl font-bold text-cyan-300">0</p>
+        </div>
+        <div class="rounded-xl bg-lime-300/10 p-3">
+         <p class="text-xs text-slate-400">LEVEL</p>
+         <p id="gameLevel" class="text-2xl font-bold text-lime-300">1/5</p>
+        </div>
+        <div class="rounded-xl bg-blue-400/10 p-3 col-span-2">
+         <p class="text-xs text-slate-400">AKURASI</p>
+         <p id="gameAccuracy" class="text-2xl font-bold">0%</p>
+        </div>
+       </div>
+       <div class="mt-5">
+        <p class="text-xs mono text-slate-400">BADGES</p>
+        <div id="badges" class="flex flex-wrap gap-2 mt-2">
+         <span class="text-sm rounded-full bg-slate-800 px-3 py-1">🔒 IPO Explorer</span><span class="text-sm rounded-full bg-slate-800 px-3 py-1">🔒 Data Detective</span><span class="text-sm rounded-full bg-slate-800 px-3 py-1">🔒 CPU Master</span>
+        </div>
+       </div>
+       <div class="mt-6 rounded-xl bg-slate-950/45 p-4">
+        <p class="text-xs text-slate-400">JALUR DATA</p>
+        <p class="mono text-xs text-cyan-200 mt-2">START → INPUT → MEMORY ↔ CPU → OUTPUT → FINISH</p>
+       </div>
+      </aside>
+      <div class="tech-card rounded-2xl p-6">
+       <div id="level1" class="stage active">
+        <p class="mono text-xs text-cyan-300">LEVEL 1 — KENALI KOMPONEN</p>
+        <h3 class="text-xl font-bold mt-2">Keyboard termasuk kategori apa?</h3>
+        <div class="grid sm:grid-cols-2 gap-3 mt-6"><button class="choice level1-answer rounded-xl p-4 text-left" data-answer="input">A. Input</button> <button class="choice level1-answer rounded-xl p-4 text-left" data-answer="memory">B. Memory</button> <button class="choice level1-answer rounded-xl p-4 text-left" data-answer="process">C. Process</button> <button class="choice level1-answer rounded-xl p-4 text-left" data-answer="output">D. Output</button>
+        </div>
+        <p id="level1Feedback" class="mt-5 min-h-7" aria-live="polite"></p>
+       </div>
+       <div id="level2" class="stage">
+        <p class="mono text-xs text-cyan-300">LEVEL 2 — SUSUN JALUR DATA</p>
+        <h3 class="text-xl font-bold mt-2">Susun kartu menjadi alur yang benar.</h3>
+        <p class="text-sm text-slate-300 mt-2">Seret kartu, atau klik kartu lalu klik slot tujuan.</p>
+        <div id="cardBank" class="flex flex-wrap gap-2 mt-5"><button class="drag-card choice rounded-lg px-4 py-2" draggable="true" data-order="monitor">Monitor</button> <button class="drag-card choice rounded-lg px-4 py-2" draggable="true" data-order="cpu">CPU</button> <button class="drag-card choice rounded-lg px-4 py-2" draggable="true" data-order="keyboard">Keyboard</button> <button class="drag-card choice rounded-lg px-4 py-2" draggable="true" data-order="memory">Memory</button>
+        </div>
+        <div class="grid md:grid-cols-4 gap-3 mt-6">
+         <div class="drop-slot rounded-xl p-3" data-slot="0">
+          <p class="text-xs text-slate-400">1</p>
+         </div>
+         <div class="drop-slot rounded-xl p-3" data-slot="1">
+          <p class="text-xs text-slate-400">2</p>
+         </div>
+         <div class="drop-slot rounded-xl p-3" data-slot="2">
+          <p class="text-xs text-slate-400">3</p>
+         </div>
+         <div class="drop-slot rounded-xl p-3" data-slot="3">
+          <p class="text-xs text-slate-400">4</p>
+         </div>
+        </div><button id="checkLevel2" type="button" class="primary rounded-xl px-5 py-3 font-bold mt-5">Periksa Jalur</button>
+        <p id="level2Feedback" class="mt-4 min-h-7" aria-live="polite"></p>
+       </div>
+       <div id="level3" class="stage">
+        <p class="mono text-xs text-cyan-300">LEVEL 3 — DETEKTIF DATA</p>
+        <h3 class="text-xl font-bold mt-2">Budi mengetik angka 20, komputer mengalikan dengan 5, lalu hasil muncul di monitor.</h3>
+        <div class="grid md:grid-cols-2 gap-3 mt-6"><label class="text-sm">Input<select id="detectiveInput" class="w-full mt-2 rounded-lg bg-slate-950/50 border border-slate-600 p-3"><option value="">Pilih...</option><option>Keyboard dan angka 20</option><option>Monitor</option><option>Speaker</option></select></label> <label class="text-sm">Memory<select id="detectiveMemory" class="w-full mt-2 rounded-lg bg-slate-950/50 border border-slate-600 p-3"><option value="">Pilih...</option><option>Menyimpan angka dan instruksi</option><option>Mencetak hasil</option><option>Mengetik data</option></select></label> <label class="text-sm">Process<select id="detectiveProcess" class="w-full mt-2 rounded-lg bg-slate-950/50 border border-slate-600 p-3"><option value="">Pilih...</option><option>CPU menghitung 20 × 5</option><option>Monitor menerima hasil</option><option>Keyboard memasukkan angka</option></select></label> <label class="text-sm">Output<select id="detectiveOutput" class="w-full mt-2 rounded-lg bg-slate-950/50 border border-slate-600 p-3"><option value="">Pilih...</option><option>Monitor menampilkan 100</option><option>CPU menghitung</option><option>Memory menyimpan</option></select></label>
+        </div><button id="checkLevel3" type="button" class="primary rounded-xl px-5 py-3 font-bold mt-5">Jalankan Investigasi</button>
+        <p id="level3Feedback" class="mt-4 min-h-7" aria-live="polite"></p>
+       </div>
+       <div id="level4" class="stage">
+        <p class="mono text-xs text-cyan-300">LEVEL 4 — JALUR YANG RUSAK</p>
+        <h3 class="text-xl font-bold mt-2">Keyboard → Monitor → CPU → Memory</h3>
+        <p class="text-slate-300 mt-2">Apa kesalahan utama pada jalur tersebut?</p>
+        <div class="grid gap-3 mt-6"><button class="choice level4-answer rounded-xl p-4 text-left" data-ok="false">Keyboard tidak boleh digunakan sebagai Input.</button> <button class="choice level4-answer rounded-xl p-4 text-left" data-ok="true">Monitor adalah Output, sehingga tidak seharusnya menerima data sebelum CPU memprosesnya.</button> <button class="choice level4-answer rounded-xl p-4 text-left" data-ok="false">Memory harus selalu berada setelah Output.</button>
+        </div>
+        <p id="level4Feedback" class="mt-5 min-h-7" aria-live="polite"></p>
+       </div>
+       <div id="level5" class="stage">
+        <p class="mono text-xs text-cyan-300">LEVEL 5 — TANTANGAN WAKTU</p>
+        <div class="flex justify-between gap-4">
+         <h3 class="text-xl font-bold">Tentukan jalur IPO kamera.</h3><span id="timer" class="mono text-2xl text-lime-300">30</span>
+        </div>
+        <p class="text-slate-300 mt-2">Kamera mengambil gambar, komputer memprosesnya, lalu menampilkan hasil pada layar.</p>
+        <div class="grid gap-3 mt-6"><button class="choice level5-answer rounded-xl p-4 text-left" data-path="wrong">Kamera → CPU → Memory → Monitor</button> <button class="choice level5-answer rounded-xl p-4 text-left" data-path="correct">Kamera → Memory → CPU → Monitor</button> <button class="choice level5-answer rounded-xl p-4 text-left" data-path="wrong">Monitor → Memory → CPU → Kamera</button>
+        </div>
+        <p id="level5Feedback" class="mt-5 min-h-7" aria-live="polite"></p>
+       </div>
+       <div id="gameFinish" class="stage text-center py-8"><i data-lucide="trophy" class="mx-auto text-lime-300 w-14 h-14"></i>
+        <h3 class="text-2xl font-bold mt-4">Data Navigator Selesai!</h3>
+        <p id="finishGameText" class="text-slate-300 mt-3"></p><button id="restartGame" type="button" class="secondary rounded-xl px-5 py-3 mt-5">Main Lagi</button>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="hots" class="view max-w-6xl mx-auto">
+     <p class="mono text-cyan-300 text-sm">03 / TANTANGAN HOTS</p>
+     <h2 data-template-id="hots-title" class="canva-text text-3xl font-bold mt-2"></h2>
+     <p data-template-id="hots-subtitle" class="canva-text text-slate-300 mt-2"></p>
+     <div class="grid lg:grid-cols-[280px_1fr] gap-6 mt-6">
+      <aside class="tech-card rounded-2xl p-4">
+       <p class="mono text-xs text-cyan-300">PILIH KASUS</p>
+       <div class="grid gap-2 mt-4"><button class="hots-case choice rounded-xl p-3 text-left" data-hots="attendance">1. Absensi Digital</button> <button class="hots-case choice rounded-xl p-3 text-left" data-hots="sensor">2. Sensor Suhu</button> <button class="hots-case choice rounded-xl p-3 text-left" data-hots="error">3. Analisis Kesalahan</button> <button class="hots-case choice rounded-xl p-3 text-left" data-hots="solution">4. Pilih Solusi</button> <button class="hots-case choice rounded-xl p-3 text-left" data-hots="daily">5. Sistem Sehari-hari</button>
+       </div>
+      </aside>
+      <article class="tech-card rounded-2xl p-6">
+       <p id="hotsTag" class="mono text-xs text-lime-300">HOTS 1</p>
+       <h3 id="hotsCaseTitle" class="text-2xl font-bold mt-2">Sistem Absensi Digital</h3>
+       <blockquote id="hotsStimulus" class="border-l-4 border-cyan-300 pl-4 mt-5 leading-relaxed text-slate-200"></blockquote>
+       <div id="hotsQuestionArea" class="mt-6"></div><label for="hotsReason" class="block font-bold mt-6">Tuliskan alasan analisismu</label> <textarea id="hotsReason" rows="5" class="w-full rounded-xl bg-slate-950/50 border border-slate-600 p-4 mt-2" placeholder="Jelaskan hubungan antar komponen IPO berdasarkan kasus..."></textarea>
+       <div class="flex flex-wrap gap-3 mt-4"><button id="hintBtn" type="button" class="secondary rounded-xl px-4 py-3">Minta Petunjuk</button> <button id="checkHots" data-template-id="check-hots-btn" type="button" class="canva-button primary rounded-xl px-5 py-3 font-bold"></button>
+       </div>
+       <div id="hotsFeedback" class="hidden mt-5 rounded-xl p-4" aria-live="polite"></div>
+      </article>
+     </div>
+    </section>
+    <section id="explore" class="view max-w-5xl mx-auto">
+     <p class="mono text-cyan-300 text-sm">04 / EKSPLORASI</p>
+     <h2 data-template-id="explore-title" class="canva-text text-3xl font-bold mt-2"></h2>
+     <p data-template-id="explore-subtitle" class="canva-text text-slate-300 mt-2"></p>
+     <div class="grid md:grid-cols-2 gap-4 mt-6"><button class="fault choice tech-card rounded-2xl p-5 text-left" data-fault="input"><i data-lucide="keyboard-off" class="text-cyan-300"></i><h3 class="font-bold mt-3">Input tidak diberikan</h3></button> <button class="fault choice tech-card rounded-2xl p-5 text-left" data-fault="cpu"><i data-lucide="cpu" class="text-lime-300"></i><h3 class="font-bold mt-3">CPU tidak memproses data</h3></button> <button class="fault choice tech-card rounded-2xl p-5 text-left" data-fault="memory"><i data-lucide="memory-stick" class="text-yellow-300"></i><h3 class="font-bold mt-3">Memory tidak menyimpan instruksi</h3></button> <button class="fault choice tech-card rounded-2xl p-5 text-left" data-fault="output"><i data-lucide="monitor-off" class="text-pink-300"></i><h3 class="font-bold mt-3">Output bermasalah</h3></button>
+     </div>
+     <div id="faultResult" class="tech-card rounded-2xl p-6 mt-6 min-h-[170px]" aria-live="polite">
+      Pilih sebuah kondisi untuk mengamati bagian alur IPO yang berhenti bekerja.
+     </div>
+    </section>
+    <section id="results" class="view max-w-6xl mx-auto">
+     <p class="mono text-cyan-300 text-sm">05 / LEARNING DASHBOARD</p>
+     <h2 data-template-id="results-title" class="canva-text text-3xl font-bold mt-2"></h2>
+     <div class="grid md:grid-cols-3 gap-5 mt-6">
+      <article class="tech-card rounded-2xl p-5">
+       <div class="flex justify-between">
+        <h3 class="font-bold">Simulasi IPO</h3><span id="simPercent">0%</span>
+       </div>
+       <div class="h-3 bg-slate-800 rounded-full overflow-hidden mt-4">
+        <div id="simBar" class="bar-fill" style="width:0%"></div>
+       </div>
+       <p id="simDashText" class="text-sm text-slate-300 mt-4">Belum menjalankan simulasi.</p>
+      </article>
+      <article class="tech-card rounded-2xl p-5">
+       <div class="flex justify-between">
+        <h3 class="font-bold">Game Jejak Data</h3><span id="gamePercent">0%</span>
+       </div>
+       <div class="h-3 bg-slate-800 rounded-full overflow-hidden mt-4">
+        <div id="gameBar" class="bar-fill" style="width:0%"></div>
+       </div>
+       <p id="gameDashText" class="text-sm text-slate-300 mt-4">Selesaikan level sebagai Data Navigator.</p>
+      </article>
+      <article class="tech-card rounded-2xl p-5">
+       <div class="flex justify-between">
+        <h3 class="font-bold">Tantangan HOTS</h3><span id="hotsPercent">0%</span>
+       </div>
+       <div class="h-3 bg-slate-800 rounded-full overflow-hidden mt-4">
+        <div id="hotsBar" class="bar-fill" style="width:0%"></div>
+       </div>
+       <p id="hotsDashText" class="text-sm text-slate-300 mt-4">Mulai analisis kasus nyata.</p>
+      </article>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-6 mt-6">
+      <article class="tech-card rounded-2xl p-6">
+       <h3 data-template-id="strength-title" class="canva-text font-bold text-lime-200"></h3>
+       <ul id="strengthList" class="space-y-3 mt-4 text-slate-200">
+        <li>• Selesaikan aktivitas untuk menemukan kekuatanmu.</li>
+       </ul>
+      </article>
+      <article class="tech-card rounded-2xl p-6">
+       <h3 data-template-id="improve-title" class="canva-text font-bold text-pink-200"></h3>
+       <ul id="improveList" class="space-y-3 mt-4 text-slate-200">
+        <li>• Dashboard akan memberi rekomendasi belajar.</li>
+       </ul>
+      </article>
+     </div>
+     <div class="tech-card rounded-2xl p-7 mt-6 text-center">
+      <p id="dashboardStatus" class="mono text-xl font-bold text-cyan-300">SEDANG EKSPLORASI</p>
+      <p id="recommendation" class="mt-3 text-slate-300">Mulailah dari Simulasi IPO agar kamu dapat melihat perjalanan data secara langsung.</p>
+     </div>
+    </section>
+   </main>
+  </div>
+  <script src="/_sdk/d16f71e6e238a193.editing_sdk.js" integrity="sha512-6IEeLFJkj8F81oWur9f6Ezwf8qoJS9WtXsJQ2HJ5pDPkRLUIppWFEkhiIy2BbxPi4gBhfdzLGeug1QGCbOHYKg=="></script>
+  <script>
+    const learning = { sim: 0, game: 0, hots: 0 };
+    const views = document.querySelectorAll('.view');
+    const navs = document.querySelectorAll('.nav-btn');
+    const $ = id => document.getElementById(id);
+
+    function showView(id) {
+      views.forEach(view => view.classList.toggle('active', view.id === id));
+      navs.forEach(nav => nav.classList.toggle('active', nav.dataset.view === id));
+      $('sidebar').classList.remove('open');
+      if (id === 'results') updateDashboard();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    navs.forEach(btn => btn.addEventListener('click', () => showView(btn.dataset.view)));
+    document.querySelectorAll('[data-go]').forEach(btn => btn.addEventListener('click', () => showView(btn.dataset.go)));
+    $('menuToggle').addEventListener('click', () => $('sidebar').classList.toggle('open'));
+
+    const cases = {
+      math: { name:'Menghitung angka', input:'Keyboard memasukkan operasi', memory:'Simpan angka dan operator', cpu:'CU mengambil instruksi; ALU menghitung', output:'Monitor menampilkan hasil', question:'Data apa yang sedang dimasukkan?', options:['25 + 15','40','Instruksi CPU','Tampilan monitor'], answer:0 },
+      average: { name:'Menghitung rata-rata nilai', input:'Keyboard: 80, 75, 90', memory:'Simpan ketiga nilai', cpu:'ALU menghitung rata-rata', output:'Monitor: 81,67', question:'Komponen mana yang menghitung rata-rata?', options:['Keyboard','Memory','ALU pada CPU','Monitor'], answer:2 },
+      typing: { name:'Mengetik dokumen', input:'Keyboard mengirim karakter', memory:'Simpan karakter & instruksi', cpu:'CPU memproses karakter', output:'Monitor menampilkan teks', question:'Perangkat apa yang menghasilkan teks terlihat?', options:['Keyboard','Memory','CPU','Monitor'], answer:3 },
+      music: { name:'Memutar musik', input:'Memilih file musik', memory:'Memuat data audio', cpu:'CPU memproses data audio', output:'Speaker menghasilkan suara', question:'Apa output utama pada kasus ini?', options:['File musik','Data audio','Suara speaker','Instruksi CPU'], answer:2 },
+      photo: { name:'Mengambil foto', input:'Kamera menangkap gambar', memory:'Simpan data gambar', cpu:'CPU memproses gambar', output:'Monitor menampilkan foto', question:'Data gambar disimpan sementara di mana?', options:['Keyboard','Memory','Monitor','Printer'], answer:1 }
+    };
+    let activeCase = 'math', simMode = 'auto', simResult = 40, simStage = 0;
+
+    function mathResult() {
+      const a = Number($('numberOne').value || 0), b = Number($('numberTwo').value || 0), op = $('operator').value;
+      if (op === '+') return a + b; if (op === '-') return a - b; if (op === '*') return a * b;
+      return b === 0 ? 'tidak terdefinisi' : a / b;
+    }
+    function setCase(key) {
+      activeCase = key;
+      document.querySelectorAll('.scenario').forEach(x => x.classList.toggle('active-scenario', x.dataset.case === key));
+      $('mathControls').classList.toggle('hidden', key !== 'math');
+      const c = cases[key];
+      $('simCaseName').textContent = c.name;
+      $('inputDetail').textContent = c.input; $('memoryDetail').textContent = c.memory; $('cpuDetail').textContent = c.cpu; $('outputDetail').textContent = c.output;
+      $('simStatus').textContent = 'Siap diprediksi';
+      $('simFeedback').textContent = 'Buat prediksi sebelum menjalankan proses.';
+      clearSimulationNodes();
+    }
+    document.querySelectorAll('.scenario').forEach(btn => btn.addEventListener('click', () => setCase(btn.dataset.case)));
+    $('autoMode').addEventListener('click', () => { simMode='auto'; $('autoMode').className='mode-btn primary rounded-lg px-3 py-2 text-sm font-bold'; $('analysisMode').className='mode-btn secondary rounded-lg px-3 py-2 text-sm'; });
+    $('analysisMode').addEventListener('click', () => { simMode='analysis'; $('analysisMode').className='mode-btn primary rounded-lg px-3 py-2 text-sm font-bold'; $('autoMode').className='mode-btn secondary rounded-lg px-3 py-2 text-sm'; });
+
+    function clearSimulationNodes() { ['input','memory','cpu','output'].forEach(n => $('node-'+n).classList.remove('active-stage')); $('analysisPanel').classList.add('hidden'); }
+    function getResult() {
+      if (activeCase === 'math') return mathResult();
+      if (activeCase === 'average') return '81,67';
+      if (activeCase === 'typing') return 'INFORMATIKA';
+      if (activeCase === 'music') return 'suara musik';
+      return 'foto pada monitor';
+    }
+    function activateStage(index) {
+      const nodes=['input','memory','cpu','output'];
+      clearSimulationNodes();
+      $('node-'+nodes[index]).classList.add('active-stage');
+      $('simStatus').textContent = ['Tahap Input','Tahap Memory','Tahap CPU','Tahap Output'][index];
+      const descriptions=[
+        'Data atau instruksi masuk melalui perangkat Input.',
+        'Data dan instruksi disimpan sementara agar siap digunakan CPU.',
+        'Control Unit mengambil instruksi, Register menahan data cepat, dan ALU menjalankan operasi.',
+        'Hasil pemrosesan diberikan kembali kepada pengguna melalui perangkat Output.'
+      ];
+      $('simFeedback').textContent=descriptions[index];
+    }
+    function finishSimulation() {
+      clearSimulationNodes(); $('node-output').classList.add('active-stage');
+      const predicted = $('prediction').value.trim().replace(',', '.');
+      const normalized = String(simResult).replace(',', '.');
+      const predictionMessage = predicted ? (predicted === normalized ? ' Prediksimu tepat! Kamu sudah memikirkan hasil sebelum melihat proses.' : ' Prediksimu belum sama dengan hasil. Bandingkan kembali operasi dan langkah CPU.') : ' Cobalah membuat prediksi pada percobaan berikutnya.';
+      $('simFeedback').textContent = 'Output akhir: ' + simResult + '.' + predictionMessage;
+      $('simStatus').textContent='Simulasi selesai';
+      learning.sim = 100; updateDashboard();
+    }
+    function beginAnalysis() {
+      const c = cases[activeCase]; activateStage(simStage);
+      $('analysisPanel').classList.remove('hidden');
+      $('analysisQuestion').textContent = ['Tahap '+['Input','Memory','CPU','Output'][simStage]+': ', ''][0] + c.question;
+      $('analysisOptions').innerHTML='';
+      c.options.forEach((option,index) => {
+        const button=document.createElement('button'); button.type='button'; button.className='choice rounded-lg p-3 text-left'; button.textContent=option;
+        button.addEventListener('click', () => {
+          if (index === c.answer) {
+            button.classList.add('correct'); $('analysisFeedback').textContent='Benar! Kamu dapat melanjutkan mengamati perjalanan data.';
+            setTimeout(() => { simStage++; if(simStage<4) beginAnalysis(); else finishSimulation(); }, 650);
+          } else {
+            button.classList.add('wrong'); $('analysisFeedback').textContent='Belum tepat. Ingat fungsi utama komponen pada tahap ini, lalu coba pilihan lain.';
+          }
+        });
+        $('analysisOptions').appendChild(button);
+      });
+    }
+    $('runSimulation').addEventListener('click', () => {
+      simResult = getResult(); simStage=0;
+      const packet=$('dataPacket'); packet.classList.remove('run'); void packet.offsetWidth; packet.classList.add('run');
+      if(simMode === 'analysis') { beginAnalysis(); return; }
+      [0,1,2,3].forEach((stage,index) => setTimeout(() => activateStage(stage), index*900));
+      setTimeout(finishSimulation, 3800);
+    });
+
+    let gameLevel=1, score=0, attempts=0, correctAnswers=0, dragged=null, timerId=null, timeLeft=30;
+    function updateGameHUD(){ $('gameScore').textContent=score; $('gameLevel').textContent=gameLevel+'/5'; $('gameAccuracy').textContent=attempts ? Math.round(correctAnswers/attempts*100)+'%' : '0%'; }
+    function showLevel(number){ document.querySelectorAll('.stage').forEach(x=>x.classList.remove('active')); $('level'+number).classList.add('active'); gameLevel=number; updateGameHUD(); if(number===5) startTimer(); }
+    function addScore(points){score=Math.max(0,score+points);updateGameHUD()}
+    function nextLevel(){ if(gameLevel<5) setTimeout(()=>showLevel(gameLevel+1),600); else finishGame(); }
+    function unlockBadges(){ const labels = score>=20 ? ['🏅 IPO Explorer','🏅 Data Detective','🏅 CPU Master'] : ['🏅 IPO Explorer','🔒 Data Detective','🔒 CPU Master']; if(gameLevel>=4) labels[1]='🏅 Data Detective'; if(gameLevel>=5) labels[2]='🏅 CPU Master'; $('badges').innerHTML=labels.map(t=>'<span class="text-sm rounded-full bg-slate-800 px-3 py-1">'+t+'</span>').join('');}
+    document.querySelectorAll('.level1-answer').forEach(btn=>btn.addEventListener('click',()=>{
+      attempts++; const ok=btn.dataset.answer==='input'; btn.classList.add(ok?'correct':'wrong');
+      if(ok){correctAnswers++;addScore(10);$('level1Feedback').textContent='Benar! Keyboard adalah perangkat Input karena memasukkan data dan instruksi.';unlockBadges();nextLevel();}
+      else{$('level1Feedback').textContent='Belum tepat. Input adalah perangkat yang digunakan untuk memasukkan data ke komputer.';addScore(-5)} updateGameHUD();
+    }));
+    document.querySelectorAll('.drag-card').forEach(card=>{
+      card.addEventListener('dragstart',()=>dragged=card);
+      card.addEventListener('click',()=>{dragged=card;document.querySelectorAll('.drag-card').forEach(x=>x.classList.remove('ring-2','ring-lime-300'));card.classList.add('ring-2','ring-lime-300')});
+    });
+    document.querySelectorAll('.drop-slot').forEach(slot=>{
+      slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('over')});
+      slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+      slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('over');if(dragged){slot.appendChild(dragged);dragged=null}});
+      slot.addEventListener('click',()=>{if(dragged){slot.appendChild(dragged);dragged=null;document.querySelectorAll('.drag-card').forEach(x=>x.classList.remove('ring-2','ring-lime-300'))}});
+    });
+    $('checkLevel2').addEventListener('click',()=>{
+      const order=[...document.querySelectorAll('.drop-slot')].map(s=>s.querySelector('.drag-card')?.dataset.order).join(',');
+      attempts++;
+      if(order==='keyboard,memory,cpu,monitor'){correctAnswers++;addScore(30);$('level2Feedback').textContent='🎉 Hebat! Kamu berhasil menemukan jalur data: Keyboard → Memory → CPU → Monitor.';unlockBadges();nextLevel();}
+      else{$('level2Feedback').textContent='💡 Petunjuk: data harus masuk terlebih dahulu sebelum disimpan dan diproses.';addScore(-5)} updateGameHUD();
+    });
+    $('checkLevel3').addEventListener('click',()=>{
+      const ids=['detectiveInput','detectiveMemory','detectiveProcess','detectiveOutput'];
+      const okay=ids.every(id=>$(id).selectedIndex===1); attempts++;
+      if(okay){correctAnswers++;addScore(30);$('level3Feedback').textContent='Analisis lengkap! Data bergerak dari Keyboard → Memory → CPU → Monitor.';unlockBadges();nextLevel();}
+      else{$('level3Feedback').textContent='Belum lengkap. Tinjau lagi: siapa memasukkan data, siapa menyimpan, siapa menghitung, dan siapa menampilkan hasil?';addScore(-5)} updateGameHUD();
+    });
+    document.querySelectorAll('.level4-answer').forEach(btn=>btn.addEventListener('click',()=>{
+      attempts++; const ok=btn.dataset.ok==='true';btn.classList.add(ok?'correct':'wrong');
+      if(ok){correctAnswers++;addScore(30);$('level4Feedback').textContent='Benar! Monitor adalah perangkat Output; ia menerima hasil setelah CPU melakukan pemrosesan.';unlockBadges();nextLevel();}
+      else{$('level4Feedback').textContent='Coba amati posisi Monitor. Apakah Monitor memasukkan data atau menampilkan hasil?';addScore(-5)} updateGameHUD();
+    }));
+    function startTimer(){clearInterval(timerId);timeLeft=30;$('timer').textContent=timeLeft;timerId=setInterval(()=>{timeLeft--; $('timer').textContent=timeLeft;if(timeLeft<=0){clearInterval(timerId);$('level5Feedback').textContent='Waktu habis. Coba ulangi game untuk melatih kecepatan analisismu.'}},1000)}
+    document.querySelectorAll('.level5-answer').forEach(btn=>btn.addEventListener('click',()=>{
+      if(timeLeft<=0)return;clearInterval(timerId);attempts++;const ok=btn.dataset.path==='correct';btn.classList.add(ok?'correct':'wrong');
+      if(ok){correctAnswers++;addScore(20+Math.min(10,Math.floor(timeLeft/3)));$('level5Feedback').textContent='Hebat! Kamera menjadi Input, Memory menyimpan gambar, CPU memproses, lalu Monitor menjadi Output.';unlockBadges();setTimeout(finishGame,800)}
+      else{$('level5Feedback').textContent='Belum tepat. Ingat: data dari kamera disimpan sementara sebelum CPU memprosesnya.';addScore(-5)}updateGameHUD();
+    }));
+    function finishGame(){clearInterval(timerId);document.querySelectorAll('.stage').forEach(x=>x.classList.remove('active'));$('gameFinish').classList.add('active');learning.game=Math.max(40,Math.round(correctAnswers/Math.max(1,attempts)*100));$('finishGameText').textContent='Skor akhir: '+score+' • Akurasi: '+learning.game+'%. Kamu telah melatih jalur IPO melalui lima level.';updateDashboard();}
+    $('restartGame').addEventListener('click',()=>{score=0;attempts=0;correctAnswers=0;gameLevel=1;document.querySelectorAll('.drop-slot .drag-card').forEach(card=>$('cardBank').appendChild(card));document.querySelectorAll('.choice').forEach(x=>x.classList.remove('correct','wrong'));$('level1Feedback').textContent='';$('level2Feedback').textContent='';$('level3Feedback').textContent='';$('level4Feedback').textContent='';$('level5Feedback').textContent='';unlockBadges();showLevel(1)});
+
+    const hotsData={
+      attendance:{tag:'HOTS 1',title:'Sistem Absensi Digital',stimulus:'Siswa menempelkan kartu pada alat pembaca. Data identitas dikirim ke komputer. Sistem mencocokkan data tersebut dengan database dan menampilkan status “Hadir” pada layar.',question:'Pilih analisis IPO yang paling lengkap.',options:['Input: kartu; Memory: database; Process: CPU mencocokkan data; Output: status Hadir di layar.','Input: monitor; Memory: keyboard; Process: speaker; Output: kartu.','Input: CPU; Memory: layar; Process: kartu; Output: database.'],answer:0,hints:['Mulailah dari benda yang pertama kali digunakan siswa.','Cari tempat data siswa disimpan untuk dibandingkan.','Bayangkan petugas absensi: kartu diberikan, daftar diperiksa, lalu status ditampilkan.']},
+      sensor:{tag:'HOTS 2',title:'Sensor Suhu',stimulus:'Sensor suhu mengirimkan data suhu ruangan setiap beberapa detik. Jika suhu melebihi 30°C, sistem memberikan peringatan.',question:'Pilih alur IPO yang tepat.',options:['Sensor → Memory → CPU membandingkan suhu → Monitor/peringatan','Monitor → Sensor → CPU → Keyboard','CPU → Sensor → Memory → Output'],answer:0,hints:['Sensor bertindak seperti indera yang mengirim data.','CPU perlu membandingkan nilai suhu dengan aturan batas 30°C.','Bayangkan termometer digital: membaca suhu, menyimpan angka, memeriksa batas, lalu memberi peringatan.']},
+      error:{tag:'HOTS 3',title:'Analisis Kesalahan Diagram',stimulus:'Diagram seorang siswa: Keyboard → CPU → Speaker → Memory. Ia mengatakan alur tersebut sudah benar.',question:'Apakah kamu setuju?',options:['Setuju, karena speaker dapat menyimpan data.','Tidak setuju, karena Output seperti speaker tidak seharusnya berada sebelum Memory dalam alur pemrosesan.'],answer:1,hints:['Tentukan terlebih dahulu fungsi Speaker.','Output menerima hasil, bukan tempat utama menyimpan instruksi.','Analogi: pengeras suara menyampaikan pengumuman, bukan menyimpan daftar pengumuman.']},
+      solution:{tag:'HOTS 4',title:'Pilih Solusi',stimulus:'Data dari keyboard dapat masuk, tetapi hasil pengolahan tidak muncul pada monitor.',question:'Komponen yang paling mungkin perlu diperiksa terlebih dahulu adalah...',options:['Keyboard, karena data tidak masuk.','Monitor/output, karena data sudah dapat masuk tetapi hasil tidak terlihat.','Mouse, karena selalu mengatur CPU.'],answer:1,hints:['Gunakan informasi yang sudah diketahui: Input berfungsi.','Masalah muncul pada bagian hasil yang tidak terlihat.','Jika resep sudah dimasak tetapi tidak tersaji, periksa bagian penyajian terlebih dahulu.']},
+      daily:{tag:'HOTS 5',title:'Menganalisis Sistem Sehari-hari',stimulus:'Pilih salah satu sistem: smartphone, ATM, lampu lalu lintas, atau game komputer. Kemudian jelaskan hubungan input, memory, process, dan output di dalamnya.',question:'Pernyataan mana yang menunjukkan hubungan IPO paling logis?',options:['Pada ATM, kartu dan PIN menjadi input; data rekening disimpan; CPU memverifikasi; layar atau uang tunai menjadi output.','Pada smartphone, layar adalah satu-satunya input dan CPU tidak diperlukan.','Pada lampu lalu lintas, output selalu diproses sebelum sensor memberi data.'],answer:0,hints:['Pilih contoh yang menunjukkan data masuk, diproses, lalu menghasilkan respons.','ATM memerlukan verifikasi sebelum uang dapat keluar.','Bayangkan urutan saat mengambil uang: masukkan kartu/PIN, sistem memeriksa saldo, lalu memberikan hasil.']}
+    };
+    let currentHots='attendance', hintLevel=0, hotsAnswered=new Set();
+    function renderHots(key){
+      currentHots=key;hintLevel=0;$('hotsFeedback').classList.add('hidden');$('hotsReason').value='';
+      const d=hotsData[key];$('hotsTag').textContent=d.tag;$('hotsCaseTitle').textContent=d.title;$('hotsStimulus').textContent=d.stimulus;$('hotsQuestionArea').innerHTML='<p class="font-bold">'+d.question+'</p><div class="grid gap-3 mt-4">'+d.options.map((o,i)=>'<button type="button" class="choice hots-option rounded-xl p-4 text-left" data-index="'+i+'">'+o+'</button>').join('')+'</div>';
+      document.querySelectorAll('.hots-option').forEach(btn=>btn.addEventListener('click',()=>document.querySelectorAll('.hots-option').forEach(x=>x.classList.toggle('ring-2',x===btn))));
+    }
+    document.querySelectorAll('.hots-case').forEach(btn=>btn.addEventListener('click',()=>renderHots(btn.dataset.hots)));
+    $('hintBtn').addEventListener('click',()=>{const d=hotsData[currentHots];const message=d.hints[Math.min(hintLevel,2)];hintLevel++;const f=$('hotsFeedback');f.className='mt-5 rounded-xl p-4 hint';f.textContent='Petunjuk '+Math.min(hintLevel,3)+': '+message;f.classList.remove('hidden')});
+    $('checkHots').addEventListener('click',()=>{
+      const selected=document.querySelector('.hots-option.ring-2');const reason=$('hotsReason').value.trim();const d=hotsData[currentHots];const f=$('hotsFeedback');
+      if(!selected||!reason){f.className='mt-5 rounded-xl p-4 bg-pink-400/10 border border-pink-400/30';f.textContent='Lengkapi pilihan dan alasanmu terlebih dahulu. Analisis yang baik menjelaskan mengapa komponen tersebut berperan dalam alur IPO.';f.classList.remove('hidden');return}
+      const ok=Number(selected.dataset.index)===d.answer;document.querySelectorAll('.hots-option').forEach(x=>x.classList.add(Number(x.dataset.index)===d.answer?'correct':''));
+      f.className='mt-5 rounded-xl p-4 '+(ok?'bg-lime-300/10 border border-lime-300/30':'bg-cyan-300/10 border border-cyan-300/30');
+      f.textContent=ok?'Analisis pilihanmu tepat. Alasanmu menunjukkan bahwa kamu sedang menghubungkan fungsi komponen, bukan sekadar menghafal definisi.':'Pilihanmu perlu ditinjau kembali. Lihat petunjuk bertahap, lalu bandingkan fungsi Input, Memory, CPU, dan Output pada stimulus.';
+      f.classList.remove('hidden');hotsAnswered.add(currentHots);learning.hots=Math.round(hotsAnswered.size/5*100);updateDashboard();
+    });
+    renderHots('attendance');
+
+    const faults={
+      input:'Tanpa Input, komputer tidak memiliki data atau instruksi awal. Memory dan CPU dapat siap, tetapi tidak ada yang dapat diproses sehingga Output belum dapat menghasilkan informasi.',
+      cpu:'Data dapat masuk dan Memory dapat menyimpannya, tetapi CPU tidak menjalankan instruksi. Karena tidak ada pemrosesan, Output tidak memiliki hasil yang bermakna untuk ditampilkan.',
+      memory:'CPU kesulitan mengambil data dan instruksi yang diperlukan. Pada model Von Neumann, Memory menyediakan data serta program agar pemrosesan dapat berlangsung teratur.',
+      output:'CPU dapat menyelesaikan pengolahan, tetapi pengguna tidak dapat menerima hasil melalui perangkat Output. Data mungkin sudah diproses, namun informasi tidak terlihat atau terdengar.'
+    };
+    document.querySelectorAll('.fault').forEach(btn=>btn.addEventListener('click',()=>{$('faultResult').innerHTML='<h3 class="text-xl font-bold text-lime-200">Amati akibatnya</h3><p class="mt-3 text-slate-200">'+faults[btn.dataset.fault]+'</p><p class="mono text-xs text-cyan-300 mt-5">INPUT → MEMORY → CPU → OUTPUT</p>'; }));
+
+    function updateDashboard(){
+      const total=Math.round((learning.sim+learning.game+learning.hots)/3);
+      $('progressBar').style.width=total+'%';$('progressText').textContent=total+'%';
+      [['sim',learning.sim],['game',learning.game],['hots',learning.hots]].forEach(([name,val])=>{$(name+'Percent').textContent=val+'%';$(name+'Bar').style.width=val+'%'});
+      $('simDashText').textContent=learning.sim?'Kamu sudah mengamati perjalanan data dalam simulasi.':'Belum menjalankan simulasi.';
+      $('gameDashText').textContent=learning.game?'Akurasi game mencerminkan keputusanmu pada jalur data.':'Selesaikan level sebagai Data Navigator.';
+      $('hotsDashText').textContent=learning.hots?'Kamu sudah mencoba '+hotsAnswered.size+' dari 5 kasus analitis.':'Mulai analisis kasus nyata.';
+      const strength=[], improve=[];
+      if(learning.sim>=80) strength.push('✅ Memahami urutan Input → Memory → CPU → Output');
+      if(learning.game>=70) strength.push('✅ Mengenali fungsi perangkat Input dan Output');
+      if(learning.hots>=60) strength.push('✅ Menganalisis hubungan komponen dalam kasus nyata');
+      if(learning.sim<80) improve.push('📌 Ulangi Simulasi IPO dan gunakan mode Analisis.');
+      if(learning.game<70) improve.push('📌 Latih kembali urutan data pada Game Jejak Data.');
+      if(learning.hots<60) improve.push('📌 Jelaskan alasan lebih rinci pada Tantangan HOTS.');
+      $('strengthList').innerHTML=(strength.length?strength:['• Lanjutkan aktivitas untuk membangun kekuatanmu.']).map(x=>'<li>'+x+'</li>').join('');
+      $('improveList').innerHTML=(improve.length?improve:['✅ Semua fitur inti sudah dikuasai dengan baik.']).map(x=>'<li>'+x+'</li>').join('');
+      $('dashboardStatus').textContent=total>=80?'IPO EXPLORER':'SEDANG EKSPLORASI';
+      $('dashboardStatus').className='mono text-xl font-bold '+(total>=80?'text-lime-300':'text-cyan-300');
+      $('recommendation').textContent=total>=80?'Hebat! Pertahankan kebiasaan memprediksi, mengamati, lalu menjelaskan alasanmu saat menganalisis sistem komputer.':'Disarankan mengulang bagian dengan nilai terendah agar hubungan Memory dan CPU semakin kuat.';
+    }
+    updateGameHUD(); updateDashboard(); lucide.createIcons();
+  </script>
+ </body>
+</html>
